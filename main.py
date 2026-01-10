@@ -43,10 +43,13 @@ def setup_environment():
     # Check for HuggingFace API key
     from config import HUGGINGFACE_API_KEY
     if HUGGINGFACE_API_KEY:
-        print("✓ Hugging Face API key configured")
+        print("[OK] Hugging Face API key configured")
         print(f"  Using model: {LLM_MODEL}")
     else:
         print("Warning: HUGGINGFACE_API_KEY not set.")
+        print("Set the API key for LLM-powered reasoning:")
+        print("  $env:HUGGINGFACE_API_KEY='your-hf-key'  (PowerShell)")
+        print("  export HUGGINGFACE_API_KEY='your-hf-key' (Linux/Mac)")
         print("The pipeline will use rule-based fallback only.")
         print()
     
@@ -54,14 +57,14 @@ def setup_environment():
     print("\nChecking data files...")
     for name, path in [("Training data", TRAIN_FILE), ("Test data", TEST_FILE)]:
         if path.exists():
-            print(f"  ✓ {name}: {path}")
+            print(f"  [OK] {name}: {path}")
         else:
-            print(f"  ✗ {name} NOT FOUND: {path}")
+            print(f"  [X] {name} NOT FOUND: {path}")
     
     # Check book files
     print("\nChecking book files...")
     for book_file in BOOKS_DIR.glob("*.txt"):
-        print(f"  ✓ {book_file.name}")
+        print(f"  [OK] {book_file.name}")
     
     print()
 
@@ -120,7 +123,7 @@ def run_test_prediction(pipeline: NarrativeConsistencyPipeline):
     submission_path = OUTPUT_DIR / "results.csv"
     submission_df.to_csv(submission_path, index=False)
     
-    print(f"\n✓ Submission file saved: {submission_path}")
+    print(f"\n[OK] Submission file saved: {submission_path}")
     
     # Summary
     print("\nPrediction Summary:")

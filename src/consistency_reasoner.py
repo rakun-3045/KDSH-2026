@@ -59,9 +59,9 @@ class NarrativeConsistencyReasoner:
         
         # Initialize LLM client based on model
         if "gemma" in model.lower() or "huggingface" in model.lower() or "google/" in model.lower():
-            # Use Hugging Face Inference API
+            # Use Hugging Face Inference API (new router endpoint)
             self.hf_api_key = api_key or os.getenv("HUGGINGFACE_API_KEY", "")
-            self.hf_api_url = f"https://api-inference.huggingface.co/models/{model}"
+            self.hf_api_url = f"https://router.huggingface.co/hf-inference/models/{model}"
             self.provider = "huggingface"
             print(f"Using Hugging Face model: {model}")
         elif "gpt" in model.lower() or "openai" in model.lower():
@@ -75,9 +75,9 @@ class NarrativeConsistencyReasoner:
             self.client = Anthropic(api_key=api_key or os.getenv("ANTHROPIC_API_KEY"))
             self.provider = "anthropic"
         else:
-            # Default to Hugging Face
+            # Default to Hugging Face (new router endpoint)
             self.hf_api_key = api_key or os.getenv("HUGGINGFACE_API_KEY", "")
-            self.hf_api_url = f"https://api-inference.huggingface.co/models/{model}"
+            self.hf_api_url = f"https://router.huggingface.co/hf-inference/models/{model}"
             self.provider = "huggingface"
             print(f"Using Hugging Face model: {model}")
     

@@ -1,15 +1,21 @@
 """
-Evidence Retrieval Module using Pathway Vector Store
+Evidence Retrieval Module using Vector Store
 Implements multi-stage retrieval for narrative consistency checking
 """
 
-import pathway as pw
-from pathway.xpacks.llm.embedders import SentenceTransformerEmbedder
 from sentence_transformers import SentenceTransformer
 import numpy as np
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass
 import re
+
+# Try to import Pathway (Linux/MacOS only)
+try:
+    import pathway as pw
+    from pathway.xpacks.llm.embedders import SentenceTransformerEmbedder
+    PATHWAY_AVAILABLE = True
+except (ImportError, ModuleNotFoundError):
+    PATHWAY_AVAILABLE = False
 
 
 @dataclass
