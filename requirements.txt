@@ -1,0 +1,26 @@
+# KDSH 2026 Track A Solution - Dependencies
+# Note: pathway requires Linux/MacOS. On Windows, the solution
+# uses a standalone implementation with the same functionality.
+
+# Pathway Framework (Core requirement for Track A)
+# Install on Linux/MacOS: pip install -U pathway
+# On Windows: The solution includes a fallback implementation
+
+# LLM and AI
+openai>=1.0.0
+litellm>=1.0.0
+
+# Vector embeddings
+sentence-transformers>=2.2.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Document processing
+PyPDF2>=3.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+tqdm>=4.65.0
+tiktoken>=0.5.0
