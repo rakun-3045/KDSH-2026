@@ -8,6 +8,7 @@ from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
 import json
 import re
+import requests
 
 # Support multiple LLM providers
 try:
@@ -21,6 +22,9 @@ try:
     ANTHROPIC_AVAILABLE = True
 except ImportError:
     ANTHROPIC_AVAILABLE = False
+
+# Hugging Face Inference API
+HUGGINGFACE_AVAILABLE = True  # Uses requests, always available
 
 
 @dataclass
@@ -46,7 +50,7 @@ class NarrativeConsistencyReasoner:
     
     def __init__(
         self,
-        model: str = "gpt-4o-mini",
+        model: str = "google/gemma-2-27b-it",
         temperature: float = 0.1,
         api_key: Optional[str] = None
     ):
@@ -54,7 +58,13 @@ class NarrativeConsistencyReasoner:
         self.temperature = temperature
         
         # Initialize LLM client based on model
-        if "gpt" in model.lower() or "openai" in model.lower():
+        if "gemma" in model.lower() or "huggingface" in model.lower() or "google/" in model.lower():
+            # Use Hugging Face Inference API
+            self.hf_api_key = api_key or os.getenv("HUGGINGFACE_API_KEY", "")
+            self.hf_api_url = f"https://api-inference.huggingface.co/models/{model}"
+            self.provider = "huggingface"
+            print(f"Using Hugging Face model: {model}")
+        elif "gpt" in model.lower() or "openai" in model.lower():
             if not OPENAI_AVAILABLE:
                 raise ImportError("OpenAI package not installed")
             self.client = OpenAI(api_key=api_key or os.getenv("OPENAI_API_KEY"))
@@ -65,12 +75,11 @@ class NarrativeConsistencyReasoner:
             self.client = Anthropic(api_key=api_key or os.getenv("ANTHROPIC_API_KEY"))
             self.provider = "anthropic"
         else:
-            # Default to OpenAI-compatible API
-            if OPENAI_AVAILABLE:
-                self.client = OpenAI(api_key=api_key or os.getenv("OPENAI_API_KEY"))
-                self.provider = "openai"
-            else:
-                raise ImportError("No LLM provider available")
+            # Default to Hugging Face
+            self.hf_api_key = api_key or os.getenv("HUGGINGFACE_API_KEY", "")
+            self.hf_api_url = f"https://api-inference.huggingface.co/models/{model}"
+            self.provider = "huggingface"
+            print(f"Using Hugging Face model: {model}")
     
     def analyze_consistency(
         self,
@@ -283,7 +292,10 @@ Your response must be in this exact JSON format:
     def _call_llm(self, prompt: str, max_tokens: int = 500) -> str:
         """Call the LLM with the given prompt."""
         try:
-            if self.provider == "openai":
+            if self.provider == "huggingface":
+                return self._call_huggingface(prompt, max_tokens)
+            
+            elif self.provider == "openai":
                 response = self.client.chat.completions.create(
                     model=self.model,
                     messages=[
@@ -307,6 +319,60 @@ Your response must be in this exact JSON format:
             
         except Exception as e:
             print(f"LLM call failed: {e}")
+            return ""
+        
+        return ""
+    
+    def _call_huggingface(self, prompt: str, max_tokens: int = 500) -> str:
+        """Call Hugging Face Inference API."""
+        headers = {
+            "Authorization": f"Bearer {self.hf_api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        # Format prompt for Gemma instruction-tuned model
+        system_msg = "You are a precise literary analyst who carefully examines evidence to determine narrative consistency."
+        formatted_prompt = f"<start_of_turn>user\n{system_msg}\n\n{prompt}<end_of_turn>\n<start_of_turn>model\n"
+        
+        payload = {
+            "inputs": formatted_prompt,
+            "parameters": {
+                "max_new_tokens": max_tokens,
+                "temperature": self.temperature,
+                "do_sample": True,
+                "return_full_text": False
+            }
+        }
+        
+        try:
+            response = requests.post(
+                self.hf_api_url,
+                headers=headers,
+                json=payload,
+                timeout=120  # 2 minute timeout for large models
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                if isinstance(result, list) and len(result) > 0:
+                    return result[0].get("generated_text", "")
+                elif isinstance(result, dict):
+                    return result.get("generated_text", "")
+            elif response.status_code == 503:
+                # Model is loading
+                print("Model is loading, waiting...")
+                import time
+                time.sleep(30)
+                return self._call_huggingface(prompt, max_tokens)
+            else:
+                print(f"HuggingFace API error: {response.status_code} - {response.text}")
+                return ""
+                
+        except requests.exceptions.Timeout:
+            print("HuggingFace API timeout")
+            return ""
+        except Exception as e:
+            print(f"HuggingFace API call failed: {e}")
             return ""
         
         return ""

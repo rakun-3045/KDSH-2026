@@ -40,17 +40,15 @@ def setup_environment():
     print(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
     
-    # Check for API key
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        print("Warning: OPENAI_API_KEY not set.")
-        print("The pipeline will use rule-based fallback only.")
-        print("Set the API key for full LLM-powered reasoning:")
-        print("  export OPENAI_API_KEY='your-key-here'  (Linux/Mac)")
-        print("  $env:OPENAI_API_KEY='your-key-here'   (PowerShell)")
-        print()
+    # Check for HuggingFace API key
+    from config import HUGGINGFACE_API_KEY
+    if HUGGINGFACE_API_KEY:
+        print("✓ Hugging Face API key configured")
+        print(f"  Using model: {LLM_MODEL}")
     else:
-        print("✓ OpenAI API key found")
+        print("Warning: HUGGINGFACE_API_KEY not set.")
+        print("The pipeline will use rule-based fallback only.")
+        print()
     
     # Check data files
     print("\nChecking data files...")

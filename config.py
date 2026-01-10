@@ -38,11 +38,12 @@ TOP_K_RETRIEVAL = 15  # Number of chunks to retrieve per query
 SIMILARITY_THRESHOLD = 0.3
 
 # LLM configuration
-LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4o-mini")  # Default model
+LLM_MODEL = os.getenv("LLM_MODEL", "google/gemma-2-27b-it")  # Gemma 27B from HuggingFace
 LLM_TEMPERATURE = 0.1  # Low temperature for consistent reasoning
 MAX_TOKENS = 2000
 
 # API Keys (set via environment variables)
+HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 

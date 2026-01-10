@@ -3,13 +3,19 @@ Main Pipeline Module
 Orchestrates the complete narrative consistency classification workflow
 """
 
-import pathway as pw
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 import pandas as pd
 from tqdm import tqdm
 import json
 import os
+
+# Try to import Pathway (Linux/MacOS only)
+try:
+    import pathway as pw
+    PATHWAY_AVAILABLE = True
+except ImportError:
+    PATHWAY_AVAILABLE = False
 
 from .document_processor import NarrativeDocumentProcessor
 from .retriever import NarrativeEvidenceRetriever, extract_backstory_claims
@@ -37,7 +43,7 @@ class NarrativeConsistencyPipeline:
         self,
         books_dir: Path,
         embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
-        llm_model: str = "gpt-4o-mini",
+        llm_model: str = "google/gemma-2-27b-it",
         chunk_size: int = 1000,
         chunk_overlap: int = 200,
         top_k_retrieval: int = 15,
@@ -300,29 +306,31 @@ class NarrativeConsistencyPipeline:
         }
 
 
-def create_pathway_streaming_pipeline(
-    books_dir: Path,
-    input_stream: pw.Table
-) -> pw.Table:
-    """
-    Create a Pathway streaming pipeline for real-time consistency checking.
-    
-    This demonstrates Pathway's streaming capabilities for continuous
-    data processing.
-    """
-    from pathway.xpacks.llm.embedders import SentenceTransformerEmbedder
-    
-    embedder = SentenceTransformerEmbedder(
-        model="sentence-transformers/all-MiniLM-L6-v2"
-    )
-    
-    # Add embeddings to input stream
-    embedded_stream = input_stream.select(
-        id=pw.this.id,
-        book_name=pw.this.book_name,
-        character=pw.this.char,
-        content=pw.this.content,
-        embedding=embedder(pw.this.content)
-    )
-    
-    return embedded_stream
+# Pathway streaming pipeline (only available on Linux/MacOS)
+if PATHWAY_AVAILABLE:
+    def create_pathway_streaming_pipeline(
+        books_dir: Path,
+        input_stream: 'pw.Table'
+    ) -> 'pw.Table':
+        """
+        Create a Pathway streaming pipeline for real-time consistency checking.
+        
+        This demonstrates Pathway's streaming capabilities for continuous
+        data processing.
+        """
+        from pathway.xpacks.llm.embedders import SentenceTransformerEmbedder
+        
+        embedder = SentenceTransformerEmbedder(
+            model="sentence-transformers/all-MiniLM-L6-v2"
+        )
+        
+        # Add embeddings to input stream
+        embedded_stream = input_stream.select(
+            id=pw.this.id,
+            book_name=pw.this.book_name,
+            character=pw.this.char,
+            content=pw.this.content,
+            embedding=embedder(pw.this.content)
+        )
+        
+        return embedded_stream
