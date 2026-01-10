@@ -1,0 +1,81 @@
+id,prediction,rationale,confidence
+46,0,Strong contradiction detected: death_contradiction,0.85
+137,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.55. LLM: No clear contradiction found",0.9
+74,0,Strong contradiction detected: death_contradiction,0.85
+109,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.64. LLM: No clear contradiction found",0.9
+104,0,Strong contradiction detected: death_contradiction,0.85
+35,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.61. LLM: No clear contradiction found",0.9
+18,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.40. LLM: No clear contradiction found",0.9
+31,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.42. LLM: No clear contradiction found",0.9
+68,0,Strong contradiction detected: death_contradiction,0.85
+9,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.37. LLM: No clear contradiction found",0.9
+84,0,Strong contradiction detected: death_contradiction,0.85
+83,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.54. LLM: No clear contradiction found",0.9
+134,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.40. LLM: No clear contradiction found",0.9
+88,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.55. LLM: No clear contradiction found",0.9
+67,0,Strong contradiction detected: death_contradiction,0.85
+112,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.55. LLM: No clear contradiction found",0.9
+79,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.64. LLM: No clear contradiction found",0.9
+55,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.58. LLM: No clear contradiction found",0.9
+12,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.51. LLM: No clear contradiction found",0.9
+13,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.64. LLM: No clear contradiction found",0.9
+102,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.45. LLM: No clear contradiction found",0.9
+92,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.62. LLM: No clear contradiction found",0.9
+1,0,Strong contradiction detected: death_contradiction,0.85
+11,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.51. LLM: No clear contradiction found",0.9
+65,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.53. LLM: No clear contradiction found",0.9
+107,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.52. LLM: No clear contradiction found",0.9
+66,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.58. LLM: No clear contradiction found",0.9
+89,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.50. LLM: No clear contradiction found",0.9
+34,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.50. LLM: No clear contradiction found",0.9
+99,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.53. LLM: No clear contradiction found",0.9
+123,0,Strong contradiction detected: death_contradiction,0.85
+116,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.46. LLM: No clear contradiction found",0.9
+43,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.46. LLM: No clear contradiction found",0.9
+108,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.59. LLM: No clear contradiction found",0.9
+128,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.40. LLM: No clear contradiction found",0.9
+29,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.40. LLM: No clear contradiction found",0.9
+69,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.49. LLM: No clear contradiction found",0.9
+50,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.49. LLM: No clear contradiction found",0.9
+5,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.36. LLM: No clear contradiction found",0.9
+39,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.51. LLM: No clear contradiction found",0.9
+19,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.53. LLM: No clear contradiction found",0.9
+113,0,Strong contradiction detected: death_contradiction,0.85
+139,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.43. LLM: No clear contradiction found",0.9
+71,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.56. LLM: No clear contradiction found",0.9
+26,0,Strong contradiction detected: death_contradiction,0.85
+117,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.56. LLM: No clear contradiction found",0.9
+6,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.51. LLM: No clear contradiction found",0.9
+76,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.41. LLM: No clear contradiction found",0.9
+17,0,Strong contradiction detected: death_contradiction,0.85
+20,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.60. LLM: No clear contradiction found",0.9
+10,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.45. LLM: No clear contradiction found",0.9
+122,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.54. LLM: No clear contradiction found",0.9
+62,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.46. LLM: No clear contradiction found",0.9
+36,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.47. LLM: No clear contradiction found",0.9
+73,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.40. LLM: No clear contradiction found",0.9
+98,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.50. LLM: No clear contradiction found",0.9
+25,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.53. LLM: No clear contradiction found",0.9
+120,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.55. LLM: No clear contradiction found",0.9
+105,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.48. LLM: No clear contradiction found",0.9
+57,0,Strong contradiction detected: death_contradiction,0.85
+106,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.56. LLM: No clear contradiction found",0.9
+118,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.45. LLM: No clear contradiction found",0.9
+126,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.51. LLM: No clear contradiction found",0.9
+4,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.46. LLM: No clear contradiction found",0.9
+125,0,Strong contradiction detected: death_contradiction,0.85
+40,0,Strong contradiction detected: death_contradiction,0.85
+96,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.54. LLM: No clear contradiction found",0.9
+45,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.55. LLM: No clear contradiction found",0.9
+54,0,Strong contradiction detected: death_contradiction,0.85
+8,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.49. LLM: No clear contradiction found",0.9
+32,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.43. LLM: No clear contradiction found",0.9
+14,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.47. LLM: No clear contradiction found",0.9
+63,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.55. LLM: No clear contradiction found",0.9
+41,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.50. LLM: No clear contradiction found",0.9
+23,0,Strong contradiction detected: death_contradiction,0.85
+90,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.50. LLM: No clear contradiction found",0.9
+100,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.52. LLM: No clear contradiction found",0.9
+138,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.40. LLM: No clear contradiction found",0.9
+130,0,Strong contradiction detected: death_contradiction,0.85
+48,1,"Ensemble scores - Pattern: 0.00, Semantic: 0.54. LLM: No clear contradiction found",0.9
