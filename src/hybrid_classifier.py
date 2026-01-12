@@ -5,11 +5,16 @@ Combines rule-based detection with LLM reasoning for high accuracy.
 
 import os
 import re
-import requests
 import numpy as np
 import time
 from typing import List, Dict, Tuple, Optional, Set
 from sentence_transformers import SentenceTransformer
+
+try:
+    from huggingface_hub import InferenceClient
+    HF_CLIENT_AVAILABLE = True
+except ImportError:
+    HF_CLIENT_AVAILABLE = False
 
 
 class HybridConsistencyClassifier:
@@ -30,8 +35,14 @@ class HybridConsistencyClassifier:
         self.chunks: Dict[str, List[Dict]] = {}
         self.embeddings: Dict[str, np.ndarray] = {}
         
-        # API endpoint
-        self.api_url = "https://router.huggingface.co/hf-inference/models/google/gemma-2-27b-it"
+        # HuggingFace Inference Client
+        self.llm_model = "google/gemma-3-27b-it"
+        self.hf_client = None
+        if HF_CLIENT_AVAILABLE and self.api_key:
+            try:
+                self.hf_client = InferenceClient(token=self.api_key)
+            except Exception as e:
+                print(f"Warning: Could not initialize HF client: {e}")
         
         # Historical facts that often cause contradictions
         self.historical_facts = {
@@ -355,55 +366,45 @@ OUTPUT ONLY:
 Then explain briefly."""
 
         try:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
+            if not self.hf_client:
+                return 1, 0.5, "No HF client"
             
-            formatted_prompt = f"<start_of_turn>user\n{prompt}<end_of_turn>\n<start_of_turn>model\n"
+            # Use chat_completion method
+            messages = [{"role": "user", "content": prompt}]
             
-            payload = {
-                "inputs": formatted_prompt,
-                "parameters": {
-                    "max_new_tokens": 100,
-                    "temperature": 0.1,
-                    "do_sample": True,
-                    "return_full_text": False
-                }
-            }
-            
-            response = requests.post(
-                self.api_url,
-                headers=headers,
-                json=payload,
-                timeout=60
+            response = self.hf_client.chat_completion(
+                model=self.llm_model,
+                messages=messages,
+                max_tokens=100,
+                temperature=0.1
             )
             
-            if response.status_code == 200:
-                result = response.json()
-                if isinstance(result, list) and len(result) > 0:
-                    text = result[0].get("generated_text", "").strip()
-                    
-                    # Parse - look for 0 or 1
-                    if text.startswith("0") or "contradict" in text[:50].lower():
-                        return 0, 0.80, f"LLM: {text[:150]}"
-                    elif text.startswith("1") or "consistent" in text[:50].lower():
-                        return 1, 0.80, f"LLM: {text[:150]}"
-                    else:
-                        # Try to find 0 or 1 in the text
-                        if "0" in text[:20]:
-                            return 0, 0.70, f"LLM: {text[:150]}"
-                        return 1, 0.60, f"LLM: {text[:150]}"
+            # Parse response
+            if response and response.choices and len(response.choices) > 0:
+                text = response.choices[0].message.content.strip()
+                
+                # Parse - look for 0 or 1
+                if text.startswith("0") or "contradict" in text[:50].lower():
+                    return 0, 0.80, f"LLM: {text[:150]}"
+                elif text.startswith("1") or "consistent" in text[:50].lower():
+                    return 1, 0.80, f"LLM: {text[:150]}"
+                else:
+                    # Try to find 0 or 1 in the text
+                    if "0" in text[:20]:
+                        return 0, 0.70, f"LLM: {text[:150]}"
+                    return 1, 0.60, f"LLM: {text[:150]}"
             
-            # Rate limit - wait and retry
-            if response.status_code == 429:
-                time.sleep(2)
-                return 1, 0.5, "Rate limited"
-            
-            return 1, 0.5, f"API: {response.status_code}"
+            return 1, 0.5, "Empty response"
             
         except Exception as e:
-            return 1, 0.5, f"Error: {str(e)[:50]}"
+            error_msg = str(e)
+            # Check for payment/quota errors
+            if "402" in error_msg or "Payment Required" in error_msg:
+                return 1, 0.5, f"Error: 402 Client Error: Payment Required"
+            # If model requires access, try fallback
+            if "403" in error_msg or "401" in error_msg or "gated" in error_msg.lower():
+                return 1, 0.5, f"Model access denied"
+            return 1, 0.5, f"Error: {error_msg[:80]}"
     
     def _normalize_book_name(self, book_name: str) -> str:
         """Normalize book name."""

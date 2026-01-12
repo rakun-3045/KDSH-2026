@@ -9,6 +9,8 @@ from dataclasses import dataclass
 import json
 import re
 import requests
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
 # Support multiple LLM providers
 try:
@@ -52,13 +54,43 @@ class NarrativeConsistencyReasoner:
         self,
         model: str = "google/gemma-2-27b-it",
         temperature: float = 0.1,
-        api_key: Optional[str] = None
+        api_key: Optional[str] = None,
+        use_local: bool = False
     ):
         self.model = model
         self.temperature = temperature
+        self.use_local = use_local
         
         # Initialize LLM client based on model
-        if "gemma" in model.lower() or "huggingface" in model.lower() or "google/" in model.lower():
+        if use_local:
+            print(f"Loading local model: {model}")
+            try:
+                self.tokenizer = AutoTokenizer.from_pretrained(model, token=api_key)
+                self.llm = AutoModelForCausalLM.from_pretrained(
+                    model,
+                    token=api_key,
+                    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+                    device_map="auto"
+                )
+                self.provider = "local"
+                print(f"Local model loaded successfully on {'GPU' if torch.cuda.is_available() else 'CPU'}")
+            except Exception as e:
+                print(f"Failed to load local model: {e}")
+                raise
+        elif "llama" in model.lower() or "groq" in model.lower() or "gpt-oss" in model.lower():
+            if not OPENAI_AVAILABLE:
+                raise ImportError("OpenAI package not installed (required for Groq)")
+            self.client = OpenAI(
+                api_key=api_key or os.getenv("GROQ_API_KEY"),
+                base_url="https://api.groq.com/openai/v1"
+            )
+            self.provider = "openai" # Groq is OpenAI-compatible
+            print(f"Using Groq model: {model}")
+        elif "gemini" in model.lower():
+            self.google_api_key = api_key or os.getenv("GOOGLE_API_KEY", "")
+            self.provider = "google"
+            print(f"Using Google Gemini model: {model}")
+        elif "gemma" in model.lower() or "huggingface" in model.lower() or "google/" in model.lower():
             # Use Hugging Face Inference API (new router endpoint)
             self.hf_api_key = api_key or os.getenv("HUGGINGFACE_API_KEY", "")
             self.hf_api_url = f"https://router.huggingface.co/hf-inference/models/{model}"
@@ -91,32 +123,60 @@ class NarrativeConsistencyReasoner:
         """
         Analyze whether a backstory is consistent with narrative evidence.
         
-        Uses a structured reasoning approach with explicit evidence linkage.
+        Uses a consolidated holistic approach to minimize LLM calls.
         """
-        # Step 1: Extract key claims from backstory
-        claims = self._extract_claims(backstory)
+        evidence_text = "\\n\\n---\\n\\n".join(evidence_passages[:8]) # Limit to top 8 passages
         
-        # Step 2: Analyze each claim against evidence
-        claim_analyses = []
-        for claim in claims[:10]:  # Limit to top 10 claims
-            analysis = self._analyze_claim(
-                claim, 
-                evidence_passages, 
-                character_name,
-                book_name
-            )
-            claim_analyses.append(analysis)
+        prompt = f"""You are an expert literary analyst. Your task is to determine if a generated backstory for the character "{character_name}" is consistent with the novel "{book_name}".
+
+BACKSTORY TO EVALUATE:
+{backstory}
+
+EVIDENCE FROM THE ORIGINAL NOVEL:
+{evidence_text}
+
+INSTRUCTIONS:
+1. Identify factual claims in the backstory (ancestry, past events, relationships, death, locations).
+2. Check if ANY claim directly contradicts the evidence provided.
+3. If specific dates, locations, or family members in the backstory clash with the text, that is a CONTRADICTION.
+4. If the backstory mentions things not strictly in the text but plausible (not contradicted), it is CONSISTENT.
+
+RESPONSE FORMAT (JSON):
+{{
+    "prediction": 0 or 1,  // 0 = Contradiction, 1 = Consistent
+    "confidence": 0.0 to 1.0,
+    "rationale": "<2-3 sentence explanation of your decision>",
+    "supporting_evidence": ["Quote 1", "Quote 2"],
+    "contradicting_evidence": ["Quote A", "Quote B"]
+}}
+
+Return ONLY the JSON.
+"""
+        response = self._call_llm(prompt, max_tokens=1000)
         
-        # Step 3: Synthesize final judgment
-        result = self._synthesize_judgment(
-            backstory,
-            character_name,
-            claim_analyses,
-            evidence_passages,
-            book_name
+        try:
+             # Find JSON in response
+            json_match = re.search(r'\{[^{}]*\}', response, re.DOTALL)
+            if json_match:
+                result = json.loads(json_match.group())
+                return ConsistencyResult(
+                    prediction=int(result.get("prediction", 1)),
+                    confidence=float(result.get("confidence", 0.5)),
+                    rationale=result.get("rationale", "No rationale provided."),
+                    supporting_evidence=result.get("supporting_evidence", []),
+                    contradicting_evidence=result.get("contradicting_evidence", [])
+                )
+        except Exception as e:
+            print(f"Holistic analysis failed parsing: {e}")
+            
+        # Fallback
+        return ConsistencyResult(
+            prediction=1,
+            confidence=0.5,
+            rationale="Automated consistency check (fallback - parsing failed or rate limit).",
+            supporting_evidence=[],
+            contradicting_evidence=[]
         )
-        
-        return result
     
     def _extract_claims(self, backstory: str) -> List[str]:
         """Extract verifiable claims from backstory."""
@@ -292,6 +352,9 @@ Your response must be in this exact JSON format:
     def _call_llm(self, prompt: str, max_tokens: int = 500) -> str:
         """Call the LLM with the given prompt."""
         try:
+            if self.provider == "local":
+                return self._call_local(prompt, max_tokens)
+
             if self.provider == "huggingface":
                 return self._call_huggingface(prompt, max_tokens)
             
@@ -317,8 +380,92 @@ Your response must be in this exact JSON format:
                 )
                 return response.content[0].text
             
+            elif self.provider == "google":
+                return self._call_google(prompt, max_tokens)
+            
         except Exception as e:
             print(f"LLM call failed: {e}")
+            return ""
+
+    def _call_google(self, prompt: str, max_tokens: int = 500) -> str:
+        """Call Google Gemini API via REST."""
+        # Clean model name for API URL
+        model_name = self.model
+        if "gemini" in model_name and not model_name.startswith("models/"):
+            # Ensure proper format like 'models/gemini-1.5-flash'
+            # But the endpoint takes 'models/{model_name}:generateContent', or just the name if we construct URL right
+            # Standard public API uses "models/gemini-pro" or similar.
+            pass
+            
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={self.google_api_key}"
+        
+        headers = {
+            "Content-Type": "application/json"
+        }
+        
+        data = {
+            "contents": [{
+                "parts": [{"text": prompt}]
+            }],
+            "generationConfig": {
+                "temperature": self.temperature,
+                "maxOutputTokens": max_tokens
+            }
+        }
+        
+        try:
+            response = requests.post(url, headers=headers, json=data, timeout=60)
+            
+            if response.status_code == 200:
+                result = response.json()
+                try:
+                    return result["candidates"][0]["content"]["parts"][0]["text"]
+                except (KeyError, IndexError):
+                    print(f"Unexpected Google API response structure: {result}")
+                    return ""
+            else:
+                print(f"Google API error: {response.status_code} - {response.text}")
+                return ""
+        except Exception as e:
+            print(f"Google API call failed: {e}")
+            return ""
+
+    def _call_local(self, prompt: str, max_tokens: int = 500) -> str:
+        """Call local Hugging Face model."""
+        try:
+            # Format prompt for instruction tuned models
+            chat = [
+                {"role": "user", "content": prompt}
+            ]
+            
+            try:
+                # Apply chat template if available
+                formatted_prompt = self.tokenizer.apply_chat_template(
+                    chat, 
+                    tokenize=False, 
+                    add_generation_prompt=True
+                )
+            except Exception:
+                # Fallback format
+                formatted_prompt = f"User: {prompt}\n\nModel:"
+
+            inputs = self.tokenizer(formatted_prompt, return_tensors="pt").to(self.llm.device)
+            
+            outputs = self.llm.generate(
+                **inputs,
+                max_new_tokens=max_tokens,
+                temperature=self.temperature,
+                do_sample=True,
+                pad_token_id=self.tokenizer.eos_token_id
+            )
+            
+            # Decode only the new tokens
+            response = self.tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
+            return response.strip()
+
+        except Exception as e:
+            print(f"Local inference failed: {e}")
+            return ""
             return ""
         
         return ""
@@ -330,9 +477,16 @@ Your response must be in this exact JSON format:
             "Content-Type": "application/json"
         }
         
-        # Format prompt for Gemma instruction-tuned model
         system_msg = "You are a precise literary analyst who carefully examines evidence to determine narrative consistency."
-        formatted_prompt = f"<start_of_turn>user\n{system_msg}\n\n{prompt}<end_of_turn>\n<start_of_turn>model\n"
+        
+        # Format prompt based on model family
+        if "gemma" in self.model.lower():
+            formatted_prompt = f"<start_of_turn>user\n{system_msg}\n\n{prompt}<end_of_turn>\n<start_of_turn>model\n"
+        elif "mistral" in self.model.lower() or "ministral" in self.model.lower():
+            formatted_prompt = f"<s>[INST] {system_msg}\n\n{prompt} [/INST]"
+        else:
+            # Generic format
+            formatted_prompt = f"{system_msg}\n\nUser: {prompt}\n\nModel:"
         
         payload = {
             "inputs": formatted_prompt,
@@ -413,9 +567,20 @@ class RuleBasedConsistencyChecker:
         for pattern_backstory, pattern_evidence in self.contradiction_patterns:
             backstory_matches = re.findall(pattern_backstory, backstory_lower)
             for match in backstory_matches:
-                evidence_pattern = pattern_evidence.replace("$1", match)
-                if re.search(evidence_pattern, combined_evidence):
-                    issues.append(f"Potential contradiction: backstory says '{match}' "
-                                  f"but evidence suggests otherwise")
+                # Handle tuple matches from findall (multiple groups)
+                if isinstance(match, tuple):
+                    match = match[0] # Take first group
+                
+                if not match: continue
+                
+                # Replace placeholders ($1 or \1) with safe matched text
+                safe_match = re.escape(match)
+                evidence_pattern = pattern_evidence.replace("$1", safe_match).replace(r"\1", safe_match)
+                
+                try:
+                    if re.search(evidence_pattern, combined_evidence):
+                        issues.append(f"Potential contradiction found for '{match}'")
+                except re.error:
+                    continue
         
         return len(issues) == 0, issues

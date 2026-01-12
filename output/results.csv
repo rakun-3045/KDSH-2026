@@ -1,61 +1,61 @@
 Story ID,Prediction,Rationale
-95,1,API: 404
-136,1,API: 404
-59,1,API: 404
-60,1,API: 404
-124,1,API: 404
-111,1,API: 404
-135,1,API: 404
-27,1,API: 404
-110,1,API: 404
-42,1,API: 404
-56,1,API: 404
-80,1,API: 404
-28,1,API: 404
-101,1,API: 404
-91,1,API: 404
-24,1,API: 404
-119,1,API: 404
-93,1,API: 404
-72,1,API: 404
-16,1,API: 404
-30,1,API: 404
-97,1,API: 404
-22,1,API: 404
-53,1,API: 404
-58,1,API: 404
-81,1,API: 404
-47,1,API: 404
-7,1,API: 404
-121,1,API: 404
-129,1,API: 404
-51,1,API: 404
-127,1,API: 404
-133,1,API: 404
-52,1,API: 404
-114,1,API: 404
-2,1,API: 404
-33,1,API: 404
-15,1,API: 404
-82,1,API: 404
-37,1,API: 404
-3,1,API: 404
-103,1,API: 404
-94,1,API: 404
-85,1,API: 404
-21,1,API: 404
-49,1,API: 404
-140,1,API: 404
-64,1,API: 404
-131,1,API: 404
-61,1,API: 404
-86,1,API: 404
-38,1,API: 404
-132,1,API: 404
-77,1,API: 404
-70,1,API: 404
-115,1,API: 404
-78,1,API: 404
-87,1,API: 404
-75,1,API: 404
-44,1,API: 404
+95,0,"The backstory is contradicted by the original text as there is no direct evidence to support any of the claims, and the provided information contradicts the interpretation that Noirtier engineered his son's murder by handing a dossier to a British spy."
+136,0,"The backstory of Faria is marked as CONTRADICT due to the claim that he 'lived quietly' being directly contradicted by the evidence, which suggests that Faria's presence or actions caused Edmond to feel dread and anxiety."
+59,0,"The backstory of Thalcave is unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways', making it inconsistent with the provided text."
+60,0,"The backstory of Thalcave is contradicted by the original text, specifically the claim that he led a night dig to save eight survivors, which is directly contradicted by the evidence showing that the group camped for the night and rested by a fire."
+124,0,"The backstory is unverifiable due to the lack of direct evidence in the original novel 'The Count of Monte Cristo', making it inconsistent with the provided text."
+111,1,"Although the claims are largely unverifiable, they do not directly contradict the original text. The provided evidence suggests that Noirtier's character is plausible, and his actions and behavior are consistent with the novel's portrayal of him as a strong-willed and influential figure, even in his old age."
+135,0,"The backstory of Abbé Faria is largely unverifiable and contradicts the original text in several key points, including his imprisonment in Rome, the duration of his imprisonment, and the circumstances of his escape. As a result, the backstory is deemed inconsistent with the original novel 'The Count of Monte Cristo'."
+27,0,"The backstory of Tom Ayrton/Ben Joyce is entirely unverifiable and lacks direct support from the original novel 'In Search of the Castaways'. None of the claims are contradicted by the evidence, but their unverifiability prevents a classification as consistent."
+110,0,"The backstory is unverifiable due to the lack of direct evidence supporting or contradicting the claims, making it impossible to determine consistency with the original novel 'The Count of Monte Cristo'."
+42,0,"The backstory is marked as CONTRADICT due to the direct contradiction in claim 2, where it states that Tom Ayrton/Ben Joyce was first mate Fletcher's crew member, but the original text explicitly states that Tom Austin is the first mate."
+56,0,"The backstory is contradicted by the original text, specifically the claims about predicting an earthquake and saving the party, which are not supported by the evidence. Additionally, the claim about character traits or beliefs formed by specific events is contradicted by the events that follow, indicating that the backstory is not consistent with the original novel."
+80,0,"The backstory of Kai-Koumou is entirely unverifiable based on the provided text, with no supporting evidence to validate any of the claims. As a result, it is not possible to mark it as CONSISTENT, and it does not directly contradict the original text, but rather lacks any connection to it."
+28,0,"The backstory of Tom Ayrton/Ben Joyce is largely unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways'. While some claims are plausible, the lack of concrete evidence to support or contradict them makes the backstory inconsistent with the original text."
+101,0,"The backstory of Noirtier is unverifiable and lacks direct evidence from the original novel, making it inconsistent with the provided information. Since no claims are directly contradicted by the evidence, but also none are supported, the decision is based on the lack of verifiable information."
+91,0,"The backstory is not supported by the original novel 'The Count of Monte Cristo' and contains multiple unverifiable claims, making it inconsistent with the original text."
+24,0,"The backstory is marked as CONTRADICT due to the direct contradiction of the ship's name from 'Brittany' to 'Britannia', which is explicitly mentioned in the original text. This contradiction outweighs the unverifiable claims, leading to a conclusive decision."
+119,0,"The backstory is largely unverifiable and lacks direct evidence from the original novel 'The Count of Monte Cristo', making it inconsistent with the provided text. Although one claim is supported, the numerous unverifiable claims and lack of direct evidence from the novel outweigh the single supported claim."
+93,0,"The backstory of Noirtier is marked as CONTRADICT due to the direct contradiction with the original text regarding his involvement in the 'Southern Army' in Marseille, which suggests a spontaneous reaction rather than a deliberate action by Noirtier."
+72,0,"The backstory is marked as CONTRADICT due to the presence of two claims that directly contradict the original text: the claim that Kai-Koumou sent twelve English-speaking youths into Auckland, and the claim that Glenarvan is a location in Auckland. These contradictions render the backstory inconsistent with the original novel 'In Search of the Castaways'."
+16,0,"The backstory of Jacques Paganel is unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways'. None of the claims are supported or contradicted by the provided text, making it inconsistent with the original narrative."
+30,0,"The backstory of Tom Ayrton/Ben Joyce is unverifiable and contradicts the original novel 'In Search of the Castaways' as none of the claims are supported by evidence, and the provided text does not mention the specific details of his pirate career, the colonial officer who framed his father, or the violent act of cutting a man's throat."
+97,1,"The backstory of Noirtier is generally consistent with the original novel, with three supported claims and no direct contradictions. However, two claims are unverifiable, which slightly reduces the confidence in the consistency of the backstory."
+22,0,"The backstory provided for Jacques Paganel is entirely unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways'. None of the claims are supported by the text, and the lack of direct evidence makes it impossible to mark the backstory as consistent."
+53,0,"The backstory is marked as CONTRADICT due to the direct contradiction of the claim that Thalcave and Thaouka plunged off a cliff, which is not supported by the original novel 'In Search of the Castaways'."
+58,0,"The backstory of Thalcave is unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways'. While some claims are plausible, they are not supported by the provided text, making it inconsistent with the original narrative."
+81,0,"The backstory of Kai-Koumou is entirely unverifiable and lacks any direct connection to the original novel 'In Search of the Castaways'. The claims made about the character's actions and experiences are not supported by the provided text, making the backstory inconsistent with the original narrative."
+47,0,"The backstory provided for Thalcave is entirely unverifiable and does not align with any information present in the original novel 'In Search of the Castaways'. The claims made about Thalcave's family, father's death, and personal belongings are not supported by the text, making the backstory inconsistent with the original narrative."
+7,0,"The backstory is entirely unverifiable and lacks any direct evidence from the original novel 'In Search of the Castaways'. The claims made about Jacques Paganel's past experiences and actions are not supported by the provided text, making it inconsistent with the original narrative."
+121,0,"The backstory of Faria is marked as CONTRADICT due to the direct contradiction of the claim that he met Edmond Dantès' father on the prison transport, which is not supported by the original text. This contradiction outweighs the unverifiable claims, leading to a conclusion that the backstory is inconsistent with the original novel."
+129,0,"The backstory of Faria is largely unverifiable and lacks direct evidence from the original novel, making it inconsistent with the provided text. Although one claim is supported, the lack of verifiable evidence for the other claims outweighs this single supported point."
+51,0,"The backstory is largely unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways'. Although one claim is supported by the text, the lack of concrete evidence for the other claims makes the backstory inconsistent with the original novel."
+127,0,"The backstory of Faria is unverifiable and lacks direct evidence from the original novel 'The Count of Monte Cristo', making it inconsistent with the provided text."
+133,0,"The claims about Faria's university lectures on Enlightenment science and his conviction about fusing religion and reason are unverifiable, making it difficult to determine their consistency with the original novel. However, the lack of direct evidence supporting these claims, combined with the fact that they are not contradicted by the original text, suggests that they may not be consistent with the character's portrayal in 'The Count of Monte Cristo'."
+52,0,"The backstory of Thalcave contradicts the original novel 'In Search of the Castaways' due to the direct contradictions in claims regarding Thaouka's acquisition and taming, which are not supported by the provided evidence."
+114,0,"The backstory of Faria is entirely unverifiable and lacks any direct connection to the original novel 'The Count of Monte Cristo', making it inconsistent with the original text."
+2,0,"The backstory is marked as CONTRADICT due to the direct contradiction with the original text regarding Paganel's language skills, specifically the claim that he picked up basic Spanish while helping the caretaker compose letters, which is contradicted by the evidence that he was studying Portuguese."
+33,0,"The backstory is unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways', making it inconsistent with the provided text. Although the claims seem plausible, the lack of direct support from the evidence prevents a confident classification as consistent."
+15,0,"The backstory is contradicted by the original text, specifically the claim that he lived in the Amazon during a time when cannibals were present, which is directly contradicted by Paganel's statement that it is not a question of wretches, indicating that cannibalism is not a concern in the region he is currently in."
+82,0,"The backstory of Kai-Koumou is entirely unverifiable and contradicts the original text, as there is no mention of the character in the provided context. All claims are unsupported by evidence, making the backstory inconsistent with the novel 'In Search of the Castaways'."
+37,0,"The backstory of Tom Ayrton/Ben Joyce is marked as CONTRADICT due to the explicit mention of his alias 'Ben Joyce' in the original novel, directly contradicting the claim that he was reared by his elder brother Benjamin."
+3,0,"The backstory of Jacques Paganel is entirely unverifiable based on the original novel 'In Search of the Castaways', with no direct evidence supporting or contradicting the claims. As a result, it is not possible to mark the backstory as consistent with the original text."
+103,0,"The backstory is partially unverifiable and lacks direct evidence to support the claims about Noirtier's relationship with Napoleon's rise to power, his distancing from former comrades, and his growing wariness of power's corruption. Although the evidence supports Noirtier's presence during Napoleon's time, the unverifiable claims raise concerns about the narrative's consistency with the original novel."
+94,0,"The backstory is marked as CONTRADICT due to the claim that Noirtier developed paralysis, which is directly contradicted by the evidence that Faria is the one experiencing paralysis. This contradiction is sufficient to mark the backstory as inconsistent with the original novel."
+85,0,"The backstory of Kai-Koumou is CONTRADICTED by the original novel 'In Search of the Castaways' due to the unverifiable nature of all claims, indicating a lack of evidence to support the character's actions and motivations."
+21,0,"The backstory is contradicted by multiple claims, specifically the HMS Austin's destination and the character's involvement with the ship, which are not supported by the original text. This indicates a significant inconsistency with the original novel 'In Search of the Castaways'."
+49,0,"The backstory of Thalcave is unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways'. Although some claims are plausible, the lack of concrete evidence makes it impossible to mark the backstory as consistent."
+140,0,"The backstory of Faria contradicts the original novel 'The Count of Monte Cristo' due to the claim that the character was in exile, which is directly contradicted by the evidence suggesting that the characters are in a prison or a similar institution."
+64,0,"The backstory of Thalcave is marked as CONTRADICT due to the presence of two unverifiable claims that cannot be supported by the original novel 'In Search of the Castaways'. Although two claims are supported, the unverifiable nature of the other two claims outweighs the supported claims, indicating a contradiction with the original text."
+131,0,"The backstory of Faria is contradicted by the original text, specifically the claim that he 'devoured the family library', which directly opposes his statement that he found 150 well-chosen books sufficient after reading nearly five thousand volumes."
+61,0,"The backstory of Thalcave is unverifiable and lacks direct evidence from the original novel 'In Search of the Castaways', making it inconsistent with the original text."
+86,0,"The backstory is marked as CONTRADICT due to the direct contradiction with the original text regarding Glenarvan's emotional state and behavior, particularly his weeping and despair when he sees Robert. Although some claims are unverifiable, the contradiction is a significant enough issue to override the plausibility of the unverifiable claims."
+38,0,"The backstory is unverifiable due to the lack of direct evidence supporting any of the claims, making it inconsistent with the original novel 'In Search of the Castaways'."
+132,0,"The backstory of Faria is largely unverifiable and contains claims that are not supported by the original text, making it inconsistent with the novel 'The Count of Monte Cristo'. While some claims are plausible, the lack of direct evidence and the presence of unverifiable claims lead to a conclusion of inconsistency."
+77,1,No contradictions found by rule-based checker
+70,1,No contradictions found by rule-based checker
+115,0,"The backstory of Faria is unverifiable and lacks direct evidence from the original novel 'The Count of Monte Cristo', making it inconsistent with the provided text."
+78,0,"The backstory of Kai-Koumou is marked as CONTRADICT due to the direct contradiction with the original text regarding the sound of flesh stripped from bone, which is associated with cannibalism after the funeral ceremonies, not as a result of the execution."
+87,0,"The backstory of Noirtier is unverifiable and lacks direct evidence from the original novel 'The Count of Monte Cristo', making it inconsistent with the provided text."
+75,0,"The backstory is partially unverifiable and lacks direct evidence to support some of the claims, making it inconsistent with the original novel 'In Search of the Castaways'. Although one claim is supported, the unverifiable nature of the other claims outweighs the supported claim, leading to an inconsistent assessment."
+44,0,"The backstory is not entirely consistent with the original novel 'In Search of the Castaways' due to the unverifiable nature of several claims, particularly those related to the character's diary and feelings of self-loathing and relief. While some claims are plausible, the lack of direct evidence supporting or contradicting them makes the backstory inconsistent with the provided text."

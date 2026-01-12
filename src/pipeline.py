@@ -47,11 +47,15 @@ class NarrativeConsistencyPipeline:
         chunk_size: int = 1000,
         chunk_overlap: int = 200,
         top_k_retrieval: int = 15,
-        use_rule_based_fallback: bool = True
+        use_rule_based_fallback: bool = True,
+        use_local_llm: bool = False,
+        api_key: Optional[str] = None
     ):
         self.books_dir = books_dir
         self.embedding_model = embedding_model
         self.llm_model = llm_model
+        self.use_local_llm = use_local_llm
+        self.api_key = api_key
         
         # Initialize components
         self.doc_processor = NarrativeDocumentProcessor(
@@ -115,7 +119,9 @@ class NarrativeConsistencyPipeline:
         if self.reasoner is None:
             try:
                 self.reasoner = NarrativeConsistencyReasoner(
-                    model=self.llm_model
+                    model=self.llm_model,
+                    use_local=self.use_local_llm,
+                    api_key=self.api_key
                 )
             except Exception as e:
                 print(f"Warning: Could not initialize LLM reasoner: {e}")

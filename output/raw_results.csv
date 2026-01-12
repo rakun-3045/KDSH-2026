@@ -1,0 +1,61 @@
+id,prediction,rationale,confidence
+95,1,"Based on analysis of 5 claims: 0 contradicted, 1 supported.",0.7
+136,1,"None of the backstory elements are directly contradicted by the source material; the novel provides no evidence for or against Faria living on an island, writing a massive treatise, or sending chapters by courier. In the absence of contradiction, the backstory is treated as consistent.",0.78
+59,1,"The provided excerpts contain no mention of Thalcave or any of the described events, so there is no textual evidence that directly contradicts the backstory. In the absence of contradictions, the backstory is treated as consistent with the novel.",0.73
+60,1,"None of the backstory elements are directly contradicted by the text of *In Search of the Castaways*; they are simply absent, making the story neither disproven nor inconsistent. Therefore it is treated as consistent.",0.73
+124,1,"The supplied excerpts contain no passage that directly contradicts the claim that Faria was on the Marseille quay, observed Caderousse stealing a rope, and remained silent. Since none of the statements are disproven, the backstory does not conflict with the novel.",0.73
+111,1,"None of the backstory statements are directly contradicted by the novel; although the excerpts do not confirm the claims, they also do not refute them, making the backstory at least plausible within the source material.",0.78
+135,0,"The novel places Abbé Faria in the Château d'If, a French prison, where he remains until his death; there is no mention of a 1796 coup, a Roman prison, or an escape in 1800. These direct contradictions outweigh any unverifiable claims.",0.97
+27,1,"None of the backstory elements are directly contradicted by the text of *In Search of the Castaways*; the novel simply does not address Ayrton's early life, his ear injury, or the circumstances described. In the absence of explicit contradictions, the backstory can be considered consistent with the source material.",0.82
+110,1,"None of the statements in the backstory are directly contradicted by the text of *The Count of Monte Cristo*; they are simply not addressed, making them unverifiable but not inconsistent. Therefore the backstory can be considered consistent with the novel.",0.86
+42,1,"None of the backstory statements are directly contradicted by the novel; the berth on the Britannia and its British merchant status are supported, while the other claims lack evidence but are not refuted. Therefore the overall backstory is consistent with the source.",0.86
+56,1,"None of the backstory elements are directly contradicted by the source material; the provided excerpts simply do not address the claims. In the absence of explicit conflict, the backstory is treated as consistent with the novel.",0.78
+80,1,"None of the backstory elements are directly contradicted by the novel's text; they are simply not mentioned, making the story neither disproven nor inconsistent.",0.78
+28,1,"The provided excerpts from *In Search of the Castaways* do not contain any passages that directly contradict the backstory about Ayrton's time on the Emerald Bird. Since none of the claims are disproven, the backstory is treated as consistent with the novel.",0.78
+101,0,"The novel depicts Noirtier as a paralyzed, mute former republican who can only communicate by eye movements, making it impossible for him to have spoken in cafés or secret meetings. This directly contradicts the backstory claim, so the backstory is marked as CONTRADICT.",0.96
+91,1,"The supplied excerpts contain no information that directly contradicts any element of the proposed backstory for Noirtier. While the claims cannot be verified from the text, they also do not conflict with the novel's established facts, so the backstory is treated as consistent.",0.86
+24,1,"None of the statements in the backstory are directly contradicted by the text of *In Search of the Castaways*; the novel simply does not address those details, making the claims neither refuted nor confirmed. In the absence of explicit contradictions, the backstory is treated as consistent with the source material.",0.82
+119,1,"None of the asserted details about Faria’s imprisonment at Fenestrella Fortress, the limestone inscription, or the warden’s plagiarism are contradicted by the text of *The Count of Monte Cristo*. Since the novel provides no evidence to refute these points, the backstory does not conflict with the source material.",0.86
+93,1,"None of the backstory elements are directly contradicted by the text of *The Count of Monte Cristo*; the novel simply does not address those specific actions, making them unverifiable but not inconsistent.",0.86
+72,1,"None of the backstory elements are directly contradicted by the text of *In Search of the Castaways*; the novel simply does not address these specific events, so the claims remain unverifiable but not inconsistent.",0.78
+16,0,"The novel clearly presents Jacques Paganel as a French geographer, which directly contradicts the backstory claim that he was born into a British merchant family. Since at least one claim conflicts with the source material, the overall backstory is marked as contradictory.",0.96
+30,1,"None of the backstory elements are directly contradicted by the source material; they are simply not mentioned, making the story neither disproven nor inconsistent with the novel.",0.78
+97,1,"None of the evaluated claims are directly contradicted by the text of The Count of Monte Cristo; they are simply not addressed, making them unverifiable rather than false. In the absence of explicit contradictions, the backstory can be considered consistent with the novel.",0.73
+22,1,"None of the backstory elements are directly contradicted by the novel; the provided text simply does not address them, making the claims unverifiable but not inconsistent.",0.86
+53,1,"Based on analysis of 5 claims: 0 contradicted, 0 supported.",0.7
+58,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+81,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+47,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+7,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+121,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+129,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+51,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+127,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+133,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+52,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+114,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+2,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+33,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+15,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+82,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+37,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+3,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+103,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+94,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+85,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+21,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+49,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+140,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+64,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+131,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+61,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+86,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+38,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+132,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+77,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+70,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+115,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+78,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+87,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+75,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7
+44,1,"Based on analysis of 0 claims: 0 contradicted, 0 supported.",0.7

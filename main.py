@@ -27,7 +27,8 @@ from config import (
     DATA_DIR, BOOKS_DIR, OUTPUT_DIR,
     TRAIN_FILE, TEST_FILE,
     EMBEDDING_MODEL, LLM_MODEL,
-    CHUNK_SIZE, CHUNK_OVERLAP, TOP_K_RETRIEVAL
+    CHUNK_SIZE, CHUNK_OVERLAP, TOP_K_RETRIEVAL,
+    USE_LOCAL_LLM, HUGGINGFACE_API_KEY, GROQ_API_KEY, GOOGLE_API_KEY
 )
 from src.pipeline import NarrativeConsistencyPipeline
 
@@ -113,17 +114,27 @@ def run_test_prediction(pipeline: NarrativeConsistencyPipeline):
     test_df = load_data(TEST_FILE)
     
     # Process test data
-    output_path = OUTPUT_DIR / "results.csv"
-    results_df = pipeline.process_dataset(test_df, output_path=output_path)
+    output_path = OUTPUT_DIR / "raw_results.csv"
+    try:
+        results_df = pipeline.process_dataset(test_df, output_path=output_path)
+    except PermissionError:
+        output_path = OUTPUT_DIR / f"raw_results_{int(datetime.now().timestamp())}.csv"
+        print(f"Warning: Default output file locked. Writing to {output_path}")
+        results_df = pipeline.process_dataset(test_df, output_path=output_path)
     
     # Format for submission
     submission_df = results_df[['id', 'prediction', 'rationale']].copy()
     submission_df.columns = ['Story ID', 'Prediction', 'Rationale']
     
-    submission_path = OUTPUT_DIR / "results.csv"
-    submission_df.to_csv(submission_path, index=False)
-    
-    print(f"\n[OK] Submission file saved: {submission_path}")
+    submission_path = OUTPUT_DIR / "submission.csv"
+    try:
+        submission_df.to_csv(submission_path, index=False)
+        print(f"\n[OK] Submission file saved: {submission_path}")
+    except PermissionError:
+        print(f"\n[!] Warning: Could not write to {submission_path} (File in use).")
+        submission_path = OUTPUT_DIR / f"submission_{int(datetime.now().timestamp())}.csv"
+        submission_df.to_csv(submission_path, index=False)
+        print(f"[OK] Saved to alternative file: {submission_path}")
     
     # Summary
     print("\nPrediction Summary:")
@@ -161,6 +172,17 @@ def main():
     # Setup
     setup_environment()
     
+    # Select API Key based on model
+    selected_api_key = GROQ_API_KEY
+    if "gemini" in args.llm_model.lower():
+        selected_api_key = GOOGLE_API_KEY
+    elif "gpt" in args.llm_model.lower() and "oss" not in args.llm_model.lower():
+        from config import OPENAI_API_KEY
+        selected_api_key = OPENAI_API_KEY
+    elif "claude" in args.llm_model.lower():
+        from config import ANTHROPIC_API_KEY
+        selected_api_key = ANTHROPIC_API_KEY
+
     # Initialize pipeline
     print("\nInitializing pipeline...")
     pipeline = NarrativeConsistencyPipeline(
@@ -169,7 +191,9 @@ def main():
         llm_model=args.llm_model,
         chunk_size=CHUNK_SIZE,
         chunk_overlap=CHUNK_OVERLAP,
-        top_k_retrieval=args.top_k
+        top_k_retrieval=args.top_k,
+        use_local_llm=USE_LOCAL_LLM,
+        api_key=selected_api_key
     )
     
     # Initialize (load and index books)

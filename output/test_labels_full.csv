@@ -1,0 +1,115 @@
+id,book_name,char,label,label_binary,confidence,rationale
+95,The Count of Monte Cristo,Noirtier,contradict,0,0.8,"LLM: 0
+
+The provided novel excerpts establish that the Count of Monte Cristo obtained information about Villefort’s past through Lord Wilmore and Abbé Buso"
+136,The Count of Monte Cristo,Faria,contradict,0,0.8,"LLM: 0
+
+The novel depicts Faria as living a reclusive life *on* the island of Elban, primarily focused on teaching Dantès and concealing treasure. The back"
+59,In Search of the Castaways,Thalcave,consistent,1,0.8,"LLM: 1
+
+The novel details a treacherous mountain ascent requiring careful footwork, rope descents, and awareness of avalanche danger. Thalcave's backstory "
+60,In Search of the Castaways,Thalcave,contradict,0,0.8,"LLM: 1
+
+The backstory doesn't contradict the novel. The novel establishes Thalcave as a highly skilled and intelligent *baqueano* (Patagonian frontiersman/"
+124,The Count of Monte Cristo,Faria,consistent,1,0.8,"LLM: 1
+
+The backstory of Faria noticing Caderousse stealing a mooring rope is consistent with the novel. Caderousse is repeatedly depicted as a petty thief"
+111,The Count of Monte Cristo,Noirtier,contradict,0,0.8,"LLM: 0
+
+The backstory states Noirtier quietly encouraged anti-royalist moves. The novel evidence shows Villefort, Noirtier's son, actively attempting to pr"
+135,The Count of Monte Cristo,Faria,consistent,1,0.5,Error: 402 Client Error: Payment Required
+27,In Search of the Castaways,Tom Ayrton/Ben Joyce,consistent,1,0.8,"LLM: 1
+
+The provided excerpts from *In Search of the Castaways* do not contain any information that contradicts the backstory of Tom Ayrton/Ben Joyce losin"
+110,The Count of Monte Cristo,Noirtier,consistent,1,0.8,"LLM: 1
+
+The backstory of Noirtier keeping a locked study with revolutionary pamphlets and letters doesn't contradict any evidence presented in the text. Th"
+42,In Search of the Castaways,Tom Ayrton/Ben Joyce,consistent,1,0.8,"LLM: 1
+
+The backstory states Ayrton had an ""unstable record"" which prompted a warning from the first mate of the Britannia. The novel details Ayrton's serv"
+56,In Search of the Castaways,Thalcave,consistent,1,0.8,"LLM: 1
+
+The backstory describes Thalcave predicting an earthquake and being humble about it, attributing credit to a spirit. The novel excerpts show Thalca"
+80,In Search of the Castaways,Kai-Koumou,contradict,0,0.8,"LLM: 0
+
+The novel describes Kai-Koumou as a chief known for cruelty and cannibalism, with a price on his head by the governor of New Zealand. The backstory"
+28,In Search of the Castaways,Tom Ayrton/Ben Joyce,contradict,0,0.8,"LLM: 1
+
+The backstory doesn't contradict the novel. The novel establishes Ayrton as a former quartermaster of the Britannia with a mysterious past, and hin"
+101,The Count of Monte Cristo,Noirtier,consistent,1,0.5,Error: 402 Client Error: Payment Required
+91,The Count of Monte Cristo,Noirtier,consistent,1,0.8,"LLM: 1
+
+The backstory is consistent with the novel. The provided excerpts demonstrate a clear atmosphere of political intrigue, royalist anxieties about Bo"
+24,In Search of the Castaways,Jacques Paganel,contradict,0,0.8,"LLM: 1
+
+The backstory doesn't contradict the novel. Jacques Paganel is mentioned as supporting Ayrton's advice regarding the route and usefulness of the ya"
+119,The Count of Monte Cristo,Faria,consistent,1,0.8,"LLM: 1
+
+The novel details Faria’s extensive digging and learning, including using a nail to write on slate. The backstory of scratching an essay into limes"
+93,The Count of Monte Cristo,Noirtier,contradict,0,0.8,"LLM: 0
+
+The backstory states Noirtier provided intelligence *before* Napoleon's landing, and Villefort discovered evidence in his vineyard. The novel excer"
+72,In Search of the Castaways,Kai-Koumou,contradict,0,0.8,"LLM: 0
+
+The backstory states Kai-Koumou trained and deployed spies in Auckland, with some becoming servants to watch Glenarvan. The novel depicts Kai-Koumo"
+16,In Search of the Castaways,Jacques Paganel,consistent,1,0.8,"LLM: 1
+
+The novel states Paganel is a secretary of the Geographical Society of Paris and has spent 20 years studying geography, intending to travel to Indi"
+30,In Search of the Castaways,Tom Ayrton/Ben Joyce,consistent,1,0.5,Error: 402 Client Error: Payment Required
+97,The Count of Monte Cristo,Noirtier,consistent,1,0.8,"LLM: 1
+
+The provided evidence from the novel explicitly states that d'Avrigny has studied poisons ""in all its forms and in the effects which it produces"" a"
+22,In Search of the Castaways,Jacques Paganel,consistent,1,0.8,"LLM: 1
+
+The backstory is consistent with the novel. The text shows Paganel is learning Spanish *during* the voyage, indicating a prior lack of fluency, whi"
+53,In Search of the Castaways,Thalcave,consistent,1,0.8,"LLM: 1
+
+The backstory describes a deep bond between Thalcave and Thaouka forged through a shared survival experience. The novel consistently portrays a str"
+58,In Search of the Castaways,Thalcave,consistent,1,0.8,"LLM: 1
+
+The novel states Paganel learns Spanish *during* the voyage, and even mentions a Patagonian (Thalcave) teaching him Spanish. The backstory simply p"
+81,In Search of the Castaways,Kai-Koumou,consistent,1,0.8,"LLM: 1
+
+The provided excerpts from *In Search of the Castaways* do not contain any information that directly contradicts the backstory of Kai-Koumou. The n"
+47,In Search of the Castaways,Thalcave,consistent,1,0.8,"LLM: 1
+
+The backstory is consistent with the novel. The provided excerpts establish Thalcave as a young man traveling with Glenarvan's group, and demonstra"
+7,In Search of the Castaways,Jacques Paganel,consistent,1,0.5,Error: 402 Client Error: Payment Required
+121,The Count of Monte Cristo,Faria,consistent,1,0.8,"LLM: 1
+
+The backstory states Faria recognized Dantès due to hearing about the *Pharaon* from Dantès’ father. The novel consistently shows Dantès being reco"
+129,The Count of Monte Cristo,Faria,consistent,1,0.8,"LLM: 1
+
+The novel mentions Monte Cristo excelling at fishing and possessing ingenious English fishing instruments. It also details his consumption of fish "
+51,In Search of the Castaways,Thalcave,consistent,1,0.8,"LLM: 1
+
+The backstory describes Thalcave as someone who was saved by a shepherd who instilled in him a sense of duty to protect civilization. The novel exc"
+127,The Count of Monte Cristo,Faria,consistent,1,0.5,Model access denied
+133,The Count of Monte Cristo,Faria,consistent,1,0.5,Model access denied
+52,In Search of the Castaways,Thalcave,consistent,1,0.5,Model access denied
+114,The Count of Monte Cristo,Faria,consistent,1,0.5,Model access denied
+2,In Search of the Castaways,Jacques Paganel,consistent,1,0.5,Model access denied
+33,In Search of the Castaways,Tom Ayrton/Ben Joyce,consistent,1,0.5,Model access denied
+15,In Search of the Castaways,Jacques Paganel,consistent,1,0.5,Model access denied
+82,In Search of the Castaways,Kai-Koumou,consistent,1,0.5,Model access denied
+37,In Search of the Castaways,Tom Ayrton/Ben Joyce,consistent,1,0.5,Model access denied
+3,In Search of the Castaways,Jacques Paganel,consistent,1,0.5,Model access denied
+103,The Count of Monte Cristo,Noirtier,consistent,1,0.5,Model access denied
+94,The Count of Monte Cristo,Noirtier,consistent,1,0.5,Error: 402 Client Error: Payment Required
+85,In Search of the Castaways,Kai-Koumou,consistent,1,0.5,Model access denied
+21,In Search of the Castaways,Jacques Paganel,consistent,1,0.5,Model access denied
+49,In Search of the Castaways,Thalcave,consistent,1,0.5,Model access denied
+140,The Count of Monte Cristo,Faria,consistent,1,0.5,Model access denied
+64,In Search of the Castaways,Thalcave,consistent,1,0.5,Model access denied
+131,The Count of Monte Cristo,Faria,consistent,1,0.5,Model access denied
+61,In Search of the Castaways,Thalcave,consistent,1,0.5,Model access denied
+86,In Search of the Castaways,Kai-Koumou,consistent,1,0.5,Model access denied
+38,In Search of the Castaways,Tom Ayrton/Ben Joyce,consistent,1,0.5,Model access denied
+132,The Count of Monte Cristo,Faria,consistent,1,0.5,Model access denied
+77,In Search of the Castaways,Kai-Koumou,consistent,1,0.5,Model access denied
+70,In Search of the Castaways,Kai-Koumou,consistent,1,0.5,Model access denied
+115,The Count of Monte Cristo,Faria,consistent,1,0.5,Model access denied
+78,In Search of the Castaways,Kai-Koumou,consistent,1,0.5,Model access denied
+87,The Count of Monte Cristo,Noirtier,consistent,1,0.5,Model access denied
+75,In Search of the Castaways,Kai-Koumou,consistent,1,0.5,Model access denied
+44,In Search of the Castaways,Tom Ayrton/Ben Joyce,consistent,1,0.5,Model access denied

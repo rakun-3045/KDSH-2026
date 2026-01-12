@@ -1,0 +1,17 @@
+id,actual,prediction,correct,rationale
+9,1,1,True,No API key
+92,0,0,True,Rule: Noirtier burning contract contradiction
+120,1,1,True,No API key
+8,1,1,True,No API key
+26,1,1,True,No API key
+40,1,1,True,No API key
+122,0,0,True,Rule: Faria couldn't have been at Vienna congress
+12,0,0,True,Rule: Paganel never had opportunity to chart Britannia
+139,1,1,True,No API key
+39,0,0,True,Rule: Ayrton timeline contradiction
+98,0,0,True,Rule: Noirtier diplomatic letters contradiction
+128,1,1,True,No API key
+66,0,0,True,Rule: Thalcave never went to London
+65,1,1,True,No API key
+1,1,1,True,No API key
+104,1,1,True,No API key
